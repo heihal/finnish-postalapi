@@ -8,17 +8,14 @@
     "/v1/lookup/{postal_code}": {
       "get": {
         "summary": "Lookup a Finnish Postal Code",
-        "x-zuplo-forward-to": {
-          "url": "https://finnish-api-suite.onrender.com/api/v1/lookup/{postal_code}"
-        },
-        "operationId": "15f33653-73c2-41f0-906f-9b7e4ea2e7d4",
+        "operationId": "lookup-postal-code",
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
             "export": "urlForwardHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "baseUrl": "https://echo.zuplo.io"
+              "url": "https://finnish-api-suite.onrender.com/api/v1/lookup/{params.postal_code}"
             }
           },
           "policies": {
