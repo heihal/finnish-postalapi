@@ -1,8 +1,34 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.3",
   "info": {
-    "version": "1.0.0",
-    "title": "My Zuplo API"
+    "title": "Finnish Postal API",
+    "version": "1.0.0"
   },
-  "paths": {}
+  "paths": {
+    "/v1/lookup/{postal_code}": {
+      "get": {
+        "summary": "Lookup a Finnish Postal Code",
+        "x-zuplo-forward-to": {
+          "url": "https://finnish-api-suite.onrender.com/api/v1/lookup/{postal_code}"
+        },
+        "operationId": "15f33653-73c2-41f0-906f-9b7e4ea2e7d4",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://echo.zuplo.io"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "api-key-inbound-1",
+              "rate-limit-inbound-1"
+            ]
+          }
+        }
+      }
+    }
+  }
 }
